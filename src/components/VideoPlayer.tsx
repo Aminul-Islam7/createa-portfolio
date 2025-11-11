@@ -1,4 +1,4 @@
- 'use client';
+'use client';
 
 import { useState, useEffect, useRef } from 'react';
 
@@ -54,7 +54,9 @@ export function VideoPlayer({ src, title, width = '100%', height = 'auto', aspec
 	};
 
 	const [embedSrc, setEmbedSrc] = useState<string>(() => normalizeSrc(src));
-	useEffect(() => { setEmbedSrc(normalizeSrc(src)); }, [src]);
+	useEffect(() => {
+		setEmbedSrc(normalizeSrc(src));
+	}, [src]);
 
 	const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
