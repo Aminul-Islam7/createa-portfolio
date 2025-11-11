@@ -1,7 +1,6 @@
 'use client';
 
 import { ProjectCard } from '@/components/ProjectCard';
-import { ClientLogos } from '@/components/ClientLogos';
 import { Contact } from '@/components/Contact';
 import { VideoShowcase } from '@/components/VideoShowcase';
 import { AnimatedLogo } from '@/components/AnimatedLogo';
@@ -75,6 +74,12 @@ const testimonials = [
 		id: 4,
 		imageUrl: '/testimonials/image03.jpg',
 	},
+];
+
+const clients = [
+	{ id: 1, name: 'Createa', imageUrl: '/logo.svg' },
+	{ id: 2, name: 'Vercel', imageUrl: '/vercel.svg' },
+	{ id: 3, name: 'Unicorn', imageUrl: '/unicorn-icon.svg' },
 ];
 
 interface DraggableImageProps {
@@ -183,6 +188,18 @@ export default function Home() {
 			</div>
 
 			{/* Projects Section */}
+			<section>
+				<div className="space-y-14 md:space-y-22">
+					{showcaseVideos.map((video, index) => (
+						<div key={video.id} className="py-8 md:py-12 px-4 md:px-8 xl:px-16">
+							<VideoShowcase videoUrl={video.videoUrl} channelName={video.channelName} viewCount={video.viewCount} isReversed={index % 2 === 1} />
+						</div>
+					))}
+				</div>
+			</section>
+
+			{/* Featured Videos Section */}
+
 			<section id="work" className="relative p-8 md:p-16 w-full">
 				{/* Extended Gradient Background */}
 				<div className="absolute inset-0 bg-gradient-to-b from-[rgba(91,197,215,0.7)] via-[rgba(217,97,159,0.07)] to-transparent pointer-events-none h-[300%]" />
@@ -199,14 +216,22 @@ export default function Home() {
 				</div>
 			</section>
 
-			{/* Featured Videos Section */}
-			<section>
-				<div className="space-y-14 md:space-y-22">
-					{showcaseVideos.map((video, index) => (
-						<div key={video.id} className="py-8 md:py-12 px-4 md:px-8 xl:px-16">
-							<VideoShowcase videoUrl={video.videoUrl} channelName={video.channelName} viewCount={video.viewCount} isReversed={index % 2 === 1} />
-						</div>
-					))}
+			{/* Worked With Section */}
+			<section id="worked-with" className="relative p-8 md:p-16 w-full">
+				<div className="relative w-full">
+					<div className="flex flex-col items-center mb-16">
+						<h2 className="text-4xl md:text-5xl font-inter font-black text-[#f3e8fd] drop-shadow-[0_0_10px_rgba(243,232,253,0.3)]">Worked with</h2>
+					</div>
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full px-4 md:px-8 items-center justify-center">
+						{clients.map((client) => (
+							<div key={client.id} className="flex flex-col items-center justify-center gap-4">
+								<div className="w-[160px] h-[160px] md:w-[220px] md:h-[220px] rounded-full overflow-hidden bg-[#ffffff10] border border-[white]/10 flex items-center justify-center shadow-2xl">
+									<Image src={client.imageUrl} alt={client.name} width={220} height={220} className="object-contain" />
+								</div>
+								<p className="text-lg md:text-xl font-inter font-semibold text-[#f3e8fd] mt-2">{client.name}</p>
+							</div>
+						))}
+					</div>
 				</div>
 			</section>
 
