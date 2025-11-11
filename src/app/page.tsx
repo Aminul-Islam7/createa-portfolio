@@ -8,6 +8,7 @@ import NavigationLinks from '@/components/NavigationLinks';
 import { DndContext, useDraggable, DragEndEvent } from '@dnd-kit/core';
 import { useState, useEffect, CSSProperties } from 'react';
 import Image from 'next/image';
+import SplitText from '@/components/SplitText';
 
 interface Position {
 	top: number;
@@ -18,42 +19,54 @@ interface Position {
 const showcaseVideos = [
 	{
 		id: 1,
-		videoUrl: 'https://www.youtube.com/embed/sQOb0ct1p-0',
-		channelName: 'VISUAL STORIES',
-		viewCount: '1.2M VIEWS',
+		videoUrl: 'https://www.youtube.com/embed/K01NsIhGO4M',
+		channelName: 'DEXECUTIONER',
+		viewCount: '450K VIEWS',
 	},
 	{
 		id: 2,
-		videoUrl: 'https://www.youtube.com/embed/eWmyvwnGWng',
-		channelName: 'MOTION ARTS',
-		viewCount: '892K VIEWS',
+		channelName: 'THE SPECIAL ONE',
+		videoUrl: 'https://drive.google.com/file/d/1w97Kb-RqvxldAc8IZUOqV3RrCIRD_K0_/view?usp=sharing',
+		viewCount: 'Highlights only (Full video yet to be uploaded)',
+	},
+	{
+		id: 3,
+		channelName: 'DOCUMENTARY',
+		videoUrl: 'https://drive.google.com/file/d/1alVwinl_0cBkQMmgDnIxsZCvb5vxtWGL/view?usp=sharing',
+		viewCount: '(Approved Trial)',
+	},
+	{
+		id: 4,
+		channelName: 'JPG',
+		videoUrl: 'https://drive.google.com/file/d/1jZR03ct79DEruNQCSQDoRhlXqEe_TYJP/view?usp=sharing',
+		viewCount: 'Subtitle & webcam handling showcase',
 	},
 ];
 
 const projects = [
 	{
 		id: 1,
-		title: 'Brand Story: Nike Air Max',
-		videoUrl: 'https://www.youtube.com/embed/3VEyeIeltu0',
-		tags: ['Commercial', 'Brand Story', 'Sports'],
+		title: 'Tam Kaur Long Form',
+		videoUrl: 'https://drive.google.com/file/d/1OfpMwwTKxLLErOhB_s3pCC-IHMTVo1GN/view?usp=sharing',
+		tags: ['Talking Head', 'Self Improvement'],
 	},
 	{
 		id: 2,
-		title: 'Mountain Adventure Documentary',
-		videoUrl: 'https://www.youtube.com/embed/7LaoBlJAXBQ',
-		tags: ['Documentary', 'Adventure', 'Sports'],
+		title: 'RR trial, talking head 1',
+		videoUrl: 'https://drive.google.com/file/d/DRIVE_ID_2/view?usp=sharing',
+		tags: ['Talking Head', 'Finance Niche'],
 	},
 	{
 		id: 3,
-		title: 'Brand Story: Nike Air Max',
-		videoUrl: 'https://www.youtube.com/embed/3VEyeIeltu0',
-		tags: ['Commercial', 'Brand Story', 'Sports'],
+		title: 'Easy Sunset Painting in FEW Minutes',
+		videoUrl: 'https://youtube.com/embed/eANXR73JQ0Y',
+		tags: ['Painting', 'Tutorial Video'],
 	},
 	{
 		id: 4,
-		title: 'Mountain Adventure Documentary',
-		videoUrl: 'https://www.youtube.com/embed/7LaoBlJAXBQ',
-		tags: ['Documentary', 'Adventure', 'Sports'],
+		title: 'MountRadhuni Commercial Edit',
+		videoUrl: 'https://drive.google.com/file/d/1VPd4GAt-TZIOfYd-ycHvqZI2JqVIH25s/view?usp=sharing',
+		tags: ['Motion Design', 'Creative', 'Ad'],
 	},
 ];
 
@@ -77,9 +90,9 @@ const testimonials = [
 ];
 
 const clients = [
-	{ id: 1, name: 'Createa', imageUrl: '/logo.svg' },
-	{ id: 2, name: 'Vercel', imageUrl: '/vercel.svg' },
-	{ id: 3, name: 'Unicorn', imageUrl: '/unicorn-icon.svg' },
+	{ id: 1, name: 'The Special One', imageUrl: '/client-logos/the-special-one.jpg', url: 'https://www.youtube.com/@ThespecialoneYT' },
+	{ id: 2, name: 'Dexecutioner', imageUrl: '/client-logos/dexecutioner.jpg', url: 'https://www.youtube.com/@DexecutionerYT' },
+	{ id: 3, name: 'Liquid Minds', imageUrl: '/client-logos/liquid-minds.jpg', url: 'https://www.youtube.com/@LiquidMinds_art' },
 ];
 
 interface DraggableImageProps {
@@ -179,13 +192,46 @@ export default function Home() {
 							{/* Right Column - Featured Video */}
 							<div className="flex items-center justify-center h-full">
 								<div className="w-full aspect-video rounded-xl overflow-hidden shadow-2xl bg-black/20">
-									<video className="w-full h-full object-cover" autoPlay loop muted playsInline src="/showreel.mp4" />
+									<video className="w-full h-full object-cover" autoPlay muted loop playsInline controls src="/showreel.mp4" />
 								</div>
 							</div>
 						</div>
 					</div>
 				</section>
+
+				{/* Quote Section */}
+				<section className="relative w-full px-4 md:px-8 py-2 md:py-4 mb-10">
+					<div className="container mx-auto max-w-[1600px]">
+						<div className="mx-auto max-w-[1100px] text-center">
+							<SplitText text="Anything motion graphics with great storytelling" className="text-2xl md:text-4xl lg:text-5xl text-[#f3e8fd] drop-shadow-[0_0_12px_rgba(243,232,253,0.2)] font-playfair italic leading-tight px-3 py-4" delay={100} duration={2} ease="power3.out" splitType="words" from={{ opacity: 0, y: 40 }} to={{ opacity: 1, y: 0 }} threshold={0.1} rootMargin="-100px" textAlign="center" onLetterAnimationComplete={() => {}} />
+						</div>
+					</div>
+				</section>
 			</div>
+
+			{/* Worked With Section */}
+			<section id="worked-with" className="relative p-8 md:p-16 w-full">
+				{/* Extended Gradient Background */}
+				<div className="absolute inset-0 bg-gradient-to-b from-[rgba(91,197,215,0.6)] via-[rgba(217,97,159,0.07)] to-transparent pointer-events-none h-[600%]" />
+
+				<div className="relative w-full">
+					<div className="flex flex-col items-center mb-16">
+						<h2 className="text-4xl md:text-5xl font-inter font-black text-[#f3e8fd] drop-shadow-[0_0_10px_rgba(243,232,253,0.3)]">Worked with</h2>
+					</div>
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full px-4 md:px-8 items-center justify-center">
+						{clients.map((client) => (
+							<div key={client.id} className="flex flex-col items-center justify-center gap-4">
+								<a href={client.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${client.name} YouTube`} className="block transition-transform duration-300 hover:scale-105 cursor-pointer">
+									<div className="w-[160px] h-[160px] md:w-[220px] md:h-[220px] rounded-full overflow-hidden bg-[#ffffff10] border border-[white]/10 flex items-center justify-center shadow-2xl">
+										<Image src={client.imageUrl} alt={client.name} width={220} height={220} className="object-contain" />
+									</div>
+								</a>
+								<p className="text-xl md:text-3xl font-inter font-semibold text-[#f3e8fd] mt-2">{client.name}</p>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
 
 			{/* Projects Section */}
 			<section>
@@ -201,9 +247,6 @@ export default function Home() {
 			{/* Featured Videos Section */}
 
 			<section id="work" className="relative p-8 md:p-16 w-full">
-				{/* Extended Gradient Background */}
-				<div className="absolute inset-0 bg-gradient-to-b from-[rgba(91,197,215,0.7)] via-[rgba(217,97,159,0.07)] to-transparent pointer-events-none h-[300%]" />
-
 				<div className="relative w-full">
 					<div className="flex flex-col items-center mb-16">
 						<h2 className="text-4xl md:text-5xl font-inter font-black text-[#f3e8fd] drop-shadow-[0_0_10px_rgba(243,232,253,0.3)]">Featured Work</h2>
@@ -211,25 +254,6 @@ export default function Home() {
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full px-4 md:px-8">
 						{projects.map((project) => (
 							<ProjectCard key={project.id} title={project.title} videoUrl={project.videoUrl} tags={project.tags} />
-						))}
-					</div>
-				</div>
-			</section>
-
-			{/* Worked With Section */}
-			<section id="worked-with" className="relative p-8 md:p-16 w-full">
-				<div className="relative w-full">
-					<div className="flex flex-col items-center mb-16">
-						<h2 className="text-4xl md:text-5xl font-inter font-black text-[#f3e8fd] drop-shadow-[0_0_10px_rgba(243,232,253,0.3)]">Worked with</h2>
-					</div>
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full px-4 md:px-8 items-center justify-center">
-						{clients.map((client) => (
-							<div key={client.id} className="flex flex-col items-center justify-center gap-4">
-								<div className="w-[160px] h-[160px] md:w-[220px] md:h-[220px] rounded-full overflow-hidden bg-[#ffffff10] border border-[white]/10 flex items-center justify-center shadow-2xl">
-									<Image src={client.imageUrl} alt={client.name} width={220} height={220} className="object-contain" />
-								</div>
-								<p className="text-lg md:text-xl font-inter font-semibold text-[#f3e8fd] mt-2">{client.name}</p>
-							</div>
 						))}
 					</div>
 				</div>

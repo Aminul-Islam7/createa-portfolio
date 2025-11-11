@@ -1,5 +1,11 @@
 import type { Metadata } from 'next';
-import { Inter, Bakbak_One, Raleway } from 'next/font/google';
+import { Inter, Bakbak_One, Raleway, Playfair_Display } from 'next/font/google';
+const playfair = Playfair_Display({
+	variable: '--font-playfair',
+	subsets: ['latin'],
+	weight: ['400'],
+	style: ['italic'],
+});
 import '@fontsource/montserrat';
 import './globals.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
@@ -39,7 +45,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={` ${bakbak.variable} ${raleway.variable} ${inter.className} bg-[#141414] min-h-screen text-white antialiased relative overflow-x-hidden`}>{children}</body>
+			<body className={` ${bakbak.variable} ${raleway.variable} ${inter.className} ${playfair.variable} bg-[#141414] min-h-screen text-white antialiased relative overflow-x-hidden`}>{children}</body>
 		</html>
 	);
 }
