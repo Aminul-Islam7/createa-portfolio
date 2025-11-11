@@ -10,6 +10,7 @@
 @layer base {
 	body {
 		@apply bg-[#141414] text-white min-h-screen;
+		font-family: var(--font-inter);
 		background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201024%201024%22%20width%3D%221024%22%20height%3D%221024%22%20preserveAspectRatio%3D%22none%22%3E%20%3Cstyle%3E%20circle%20%7B%20fill%3A%20rgba(0,0,0,0.502)%3B%20%7D%20%3C%2Fstyle%3E%20%3Ccircle%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%223.01%25%22%20%2F%3E%20%3Ccircle%20cx%3D%22768%22%20cy%3D%22768%22%20r%3D%223.01%25%22%20%2F%3E%3C%2Fsvg%3E');
 		background-size: 256px;
 		background-position: center;
@@ -22,6 +23,10 @@
 
 	.font-bakbak {
 		font-family: var(--font-bakbak);
+	}
+
+	.font-raleway {
+		font-family: var(--font-raleway);
 	}
 }
 
