@@ -6,7 +6,7 @@ export default function NavigationLinks() {
 	};
 
 	return (
-		<div className="flex gap-4 justify-end">
+		<div className="flex gap-4 justify-center md:justify-end">
 			<button onClick={() => handleScroll('#work')} className="px-6 py-2.5 text-sm bg-gradient-to-r from-[#d9619f] to-[#5bc5d7] rounded-full text-white font-medium hover:opacity-90 transition-all duration-300 backdrop-blur-sm hover:scale-105 text-center">
 				Portfolio
 			</button>

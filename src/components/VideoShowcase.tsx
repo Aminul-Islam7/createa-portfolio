@@ -1,12 +1,13 @@
 'use client';
 
+import React from 'react';
 import { VideoPlayer } from './VideoPlayer';
 import { useState, useEffect } from 'react';
 
 interface VideoShowcaseProps {
 	videoUrl: string;
 	channelName: string;
-	viewCount: string;
+	viewCount: React.ReactNode;
 	isReversed?: boolean;
 }
 
@@ -21,7 +22,7 @@ function formatViewCount(n: number | string | undefined | null) {
 }
 
 export function VideoShowcase({ videoUrl, channelName, viewCount, isReversed = false }: VideoShowcaseProps) {
-	const [liveViewCount, setLiveViewCount] = useState<string>(viewCount);
+	const [liveViewCount, setLiveViewCount] = useState<React.ReactNode>(viewCount);
 
 	useEffect(() => {
 		// Call the server-side proxy API which uses the server env var YOUTUBE_API_KEY

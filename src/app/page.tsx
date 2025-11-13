@@ -12,7 +12,14 @@ import ShinyText from '@/components/ShinyText';
 
 // position type removed; not used for masonry layout
 
-const showcaseVideos = [
+interface ShowcaseVideo {
+	id: number;
+	videoUrl: string;
+	channelName: string;
+	viewCount: React.ReactNode;
+}
+
+const showcaseVideos: ShowcaseVideo[] = [
 	{
 		id: 1,
 		videoUrl: 'https://www.youtube.com/embed/K01NsIhGO4M',
@@ -138,12 +145,12 @@ export default function Home() {
 				{/* Hero Background Gradient */}
 				<div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#5bc5d7]/30 pointer-events-none" />
 				{/* Navigation Menu */}
-				<nav className="absolute top-0 right-0 z-50 px-4 md:px-8 py-6">
+				<nav className="absolute top-0 left-1/2 transform -translate-x-1/2 md:left-auto md:right-0 md:transform-none z-50 px-4 md:px-8 py-6">
 					<NavigationLinks />
 				</nav>
 
 				{/* Hero Section */}
-				<section className="relative min-h-[700px] max-h-[900px] w-full flex items-center justify-center py-16">
+				<section className="relative min-h-[700px] max-h-[900px] w-full flex items-center justify-center pt-24 pb-16 md:pt-16 md:pb-16">
 					{/* Content Container */}
 					<div className="container max-w-[1600px] mx-auto px-4 md:px-8">
 						<div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-8 md:gap-8 items-center">
