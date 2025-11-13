@@ -150,19 +150,19 @@ export default function Home() {
 				</nav>
 
 				{/* Hero Section */}
-				<section className="relative min-h-[700px] max-h-[900px] w-full flex items-center justify-center pt-24 pb-16 md:pt-16 md:pb-16">
+				<section className="relative min-h-[700px] max-h-[900px] w-full flex items-center justify-center pt-24 pb-8 md:pt-16 md:pb-16">
 					{/* Content Container */}
 					<div className="container max-w-[1600px] mx-auto px-4 md:px-8">
 						<div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-8 md:gap-8 items-center">
 							{/* Left Column - Logo, Title, and Work with me button */}
 							<div className="flex flex-col items-center md:items-start justify-center gap-10">
-								<div className="scale-90">
+								<div className="scale-75 sm:scale-85 md:scale-90 lg:scale-95">
 									<AnimatedLogo />
 								</div>
-								<h1 className="text-6xl md:text-[5rem] font-raleway font-bold text-white -mt-14">
+								<h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-[5rem] font-raleway font-bold text-white -mt-14">
 									<span className="font-raleway">Createa</span>
 								</h1>
-								<a href="https://discordid.netlify.app/?id=1254023931246153800" target="_blank" rel="noopener noreferrer" className="px-10 py-8 text-2xl md:text-4xl bg-[rgb(0,122,255)] text-white rounded-full font-black tracking-wide hover:bg-[rgba(44,146,255,1)] transition-all duration-300 shadow-[0_0_40px_rgba(0,122,255,0.6)] backdrop-blur-sm hover:scale-105 hover:shadow-[0_0_40px_rgba(0,122,255,0.9)]">
+								<a href="https://discordid.netlify.app/?id=1254023931246153800" target="_blank" rel="noopener noreferrer" className="px-8 sm:px-10 py-6 sm:py-8 text-xl sm:text-2xl md:text-3xl lg:text-4xl bg-[rgb(0,122,255)] text-white rounded-full font-black tracking-wide hover:bg-[rgba(44,146,255,1)] transition-all duration-300 shadow-[0_0_40px_rgba(0,122,255,0.6)] backdrop-blur-sm hover:scale-105 hover:shadow-[0_0_40px_rgba(0,122,255,0.9)]">
 									Work with me!
 								</a>
 							</div>
@@ -178,23 +178,23 @@ export default function Home() {
 				</section>
 
 				{/* Quote Section */}
-				<section className="relative w-full px-4 md:px-8 py-2 md:py-4 mb-10">
+				<section className="relative w-full px-4 md:px-8 py-1 sm:py-2 md:py-3 lg:py-4 mb-6 sm:mb-8 md:mb-10">
 					<div className="container mx-auto max-w-[1600px]">
 						<div className="mx-auto max-w-[1100px] text-center">
-							<SplitText text="Anything motion graphics with great storytelling" className="text-2xl md:text-4xl lg:text-5xl text-[#f3e8fd] drop-shadow-[0_0_12px_rgba(243,232,253,0.2)] font-playfair italic leading-tight px-3 py-4" delay={100} duration={2} ease="power3.out" splitType="words" from={{ opacity: 0, y: 40 }} to={{ opacity: 1, y: 0 }} threshold={0.1} rootMargin="-100px" textAlign="center" onLetterAnimationComplete={() => {}} />
+							<SplitText text="Anything motion graphics with great storytelling" className="text-xl sm:text-2xl md:text-4xl lg:text-5xl text-[#f3e8fd] drop-shadow-[0_0_12px_rgba(243,232,253,0.2)] font-playfair italic leading-tight px-3 py-2 sm:py-3 md:py-4" delay={100} duration={2} ease="power3.out" splitType="words" from={{ opacity: 0, y: 40 }} to={{ opacity: 1, y: 0 }} threshold={0.1} rootMargin="-100px" textAlign="center" onLetterAnimationComplete={() => {}} />
 						</div>
 					</div>
 				</section>
 			</div>
 
 			{/* Worked With Section */}
-			<section id="worked-with" className="relative p-8 md:p-16 w-full">
+			<section id="worked-with" className="relative p-6 sm:p-8 md:p-16 w-full">
 				{/* Extended Gradient Background */}
 				<div className="absolute inset-0 bg-gradient-to-b from-[rgba(91,197,215,0.6)] via-[rgba(217,97,159,0.07)] to-transparent pointer-events-none h-[600%]" />
 
 				<div className="relative w-full">
-					<div className="flex flex-col items-center mb-16">
-						<h2 className="text-4xl md:text-5xl font-inter font-black text-[#f3e8fd] drop-shadow-[0_0_10px_rgba(243,232,253,0.3)]">Worked with</h2>
+					<div className="flex flex-col items-center mb-12 sm:mb-16">
+						<h2 className="text-3xl sm:text-4xl md:text-5xl font-inter font-black text-[#f3e8fd] drop-shadow-[0_0_10px_rgba(243,232,253,0.3)]">Worked with</h2>
 					</div>
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full px-4 md:px-8 items-center justify-center">
 						{clients.map((client) => (
@@ -204,12 +204,12 @@ export default function Home() {
 										<Image src={client.imageUrl} alt={client.name} width={220} height={220} className="object-contain" />
 									</div>
 								</a>
-								<p className="text-xl md:text-3xl font-inter font-semibold text-[#f3e8fd] mt-2">{client.name}</p>
+								<p className="text-lg sm:text-xl md:text-3xl font-inter font-semibold text-[#f3e8fd] mt-2">{client.name}</p>
 							</div>
 						))}
 					</div>
-					<div className="mt-16 w-full flex items-center justify-center">
-						<ShinyText text="and many more.." disabled={false} speed={2} className="text-lg md:text-3xl font-bakbak italic" />
+					<div className="mt-12 sm:mt-16 w-full flex items-center justify-center">
+						<ShinyText text="and many more.." disabled={false} speed={2} className="text-base sm:text-lg md:text-3xl font-bakbak italic" />
 					</div>
 				</div>
 			</section>
@@ -218,7 +218,7 @@ export default function Home() {
 			<section>
 				<div className="space-y-2">
 					{showcaseVideos.map((video, index) => (
-						<div key={video.id} className="py-8 md:py-12 px-4 md:px-8 xl:px-16">
+						<div key={video.id} className="py-6 sm:py-8 md:py-12 px-4 md:px-8 xl:px-16">
 							<VideoShowcase videoUrl={video.videoUrl} channelName={video.channelName} viewCount={video.viewCount} isReversed={index % 2 === 1} />
 						</div>
 					))}
@@ -226,41 +226,37 @@ export default function Home() {
 			</section>
 
 			{/* Short Form Section */}
-			<section id="short-form" className="relative p-4 md:p-8 w-full">
-				<div className="container mx-auto max-w-[800px]">
-					<div className="flex flex-col items-center mb-8">
-						<h2 className="text-4xl md:text-5xl font-inter font-black text-[#f3e8fd] drop-shadow-[0_0_10px_rgba(243,232,253,0.3)]">Short Form</h2>
-					</div>
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-						{shortFormVideos.map((video) => (
-							<div key={video.id} className={`w-full`}>
-								<VideoPlayer src={video.videoUrl} title={video.title} aspectRatio={video.aspect} />
-							</div>
-						))}
-					</div>
+			<section id="short-form" className="relative p-3 sm:p-4 md:p-8 w-full">
+				<div className="flex flex-col items-center mb-6 sm:mb-8">
+					<h2 className="text-3xl sm:text-4xl md:text-5xl font-inter font-black text-[#f3e8fd] drop-shadow-[0_0_10px_rgba(243,232,253,0.3)]">Short Form</h2>
+				</div>
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mx-auto max-w-[800px]">
+					{shortFormVideos.map((video) => (
+						<div key={video.id} className={`w-full`}>
+							<VideoPlayer src={video.videoUrl} title={video.title} aspectRatio={video.aspect} />
+						</div>
+					))}
 				</div>
 			</section>
 
 			{/* Featured Videos Section */}
 
-			<section id="work" className="relative p-8 md:p-16 w-full">
-				<div className="container mx-auto max-w-[1400px]">
-					<div className="flex flex-col items-center mb-16">
-						<h2 className="text-4xl md:text-5xl font-inter font-black text-[#f3e8fd] drop-shadow-[0_0_10px_rgba(243,232,253,0.3)]">Featured Work</h2>
-					</div>
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full px-4 md:px-8">
-						{projects.map((project) => (
-							<ProjectCard key={project.id} title={project.title} videoUrl={project.videoUrl} tags={project.tags} />
-						))}
-					</div>
+			<section id="work" className="relative p-4 sm:p-6 md:p-16 w-full">
+				<div className="flex flex-col items-center mb-12 sm:mb-16">
+					<h2 className="text-3xl sm:text-4xl md:text-5xl font-inter font-black text-[#f3e8fd] drop-shadow-[0_0_10px_rgba(243,232,253,0.3)]">Featured Work</h2>
+				</div>
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-[1200px]">
+					{projects.map((project) => (
+						<ProjectCard key={project.id} title={project.title} videoUrl={project.videoUrl} tags={project.tags} />
+					))}
 				</div>
 			</section>
 
 			<div className="my-4 md:my-10"></div>
 
 			{/* Testimonials Section */}
-			<section id="testimonials" className="relative py-8 bg-[#000]/10 w-full rounded-[30px] backdrop-blur-md mx-auto px-4 md:px-8 max-w-[1750px] border border-[white]/20">
-				<div className="columns-1 sm:columns-2 md:columns-3" style={{ columnGap: '1rem' }}>
+			<section id="testimonials" className="relative py-6 sm:py-8 bg-[#000]/10 w-full rounded-[30px] backdrop-blur-md mx-auto px-4 md:px-8 max-w-[1750px] border border-[white]/20">
+				<div className="columns-1 sm:columns-2 md:columns-2 lg:columns-3" style={{ columnGap: '1rem' }}>
 					{testimonials.map((t) => (
 						<div key={t.id} className="break-inside-avoid mb-4">
 							<Image src={t.imageUrl} alt={`Testimonial ${t.id}`} width={800} height={600} className="w-full h-auto object-cover rounded-[10px]" />
