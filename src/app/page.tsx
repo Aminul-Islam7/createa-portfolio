@@ -9,6 +9,7 @@ import NavigationLinks from '@/components/NavigationLinks';
 import Image from 'next/image';
 import SplitText from '@/components/SplitText';
 import ShinyText from '@/components/ShinyText';
+import { useState, useEffect } from 'react';
 
 // position type removed; not used for masonry layout
 
@@ -124,6 +125,22 @@ const shortFormVideos = [
 ];
 
 export default function Home() {
+	const [isDoubleColumn, setIsDoubleColumn] = useState(false);
+
+	useEffect(() => {
+		const checkDoubleColumn = () => {
+			const width = window.innerWidth;
+			setIsDoubleColumn(width >= 640 && width < 1024);
+		};
+
+		checkDoubleColumn(); // Initial check
+		window.addEventListener('resize', checkDoubleColumn);
+
+		return () => window.removeEventListener('resize', checkDoubleColumn);
+	}, []);
+
+	const displayedTestimonials = isDoubleColumn ? [testimonials[0], testimonials[2], testimonials[1], testimonials[3], testimonials[4]] : testimonials;
+
 	return (
 		<main className="flex flex-col w-full bg-[#000] relative overflow-hidden">
 			{/* Background Pattern */}
@@ -150,7 +167,7 @@ export default function Home() {
 				</nav>
 
 				{/* Hero Section */}
-				<section className="relative min-h-[700px] max-h-[900px] w-full flex items-center justify-center pt-24 pb-8 md:pt-16 md:pb-16">
+				<section className="relative min-h-[700px] max-h-[900px] w-full flex items-center justify-center pt-24 pb-8 md:pt-16 md:pb-12">
 					{/* Content Container */}
 					<div className="container max-w-[1600px] mx-auto px-4 md:px-8">
 						<div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-8 md:gap-8 items-center">
@@ -188,7 +205,7 @@ export default function Home() {
 			</div>
 
 			{/* Worked With Section */}
-			<section id="worked-with" className="relative p-6 sm:p-8 md:p-16 w-full">
+			<section id="worked-with" className="relative p-6 sm:p-8 md:p-12 lg:p-16 w-full">
 				{/* Extended Gradient Background */}
 				<div className="absolute inset-0 bg-gradient-to-b from-[rgba(91,197,215,0.6)] via-[rgba(217,97,159,0.07)] to-transparent pointer-events-none h-[600%]" />
 
@@ -196,20 +213,20 @@ export default function Home() {
 					<div className="flex flex-col items-center mb-12 sm:mb-16">
 						<h2 className="text-3xl sm:text-4xl md:text-5xl font-inter font-black text-[#f3e8fd] drop-shadow-[0_0_10px_rgba(243,232,253,0.3)]">Worked with</h2>
 					</div>
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full px-4 md:px-8 items-center justify-center">
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full px-4 md:px-8 items-center justify-center  mx-auto max-w-[1200px]">
 						{clients.map((client) => (
 							<div key={client.id} className="flex flex-col items-center justify-center gap-4">
 								<a href={client.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${client.name} YouTube`} className="block transition-transform duration-300 hover:scale-105 cursor-pointer">
-									<div className="w-[160px] h-[160px] md:w-[220px] md:h-[220px] rounded-full overflow-hidden bg-[#ffffff10] border border-[white]/10 flex items-center justify-center shadow-2xl">
+									<div className="w-[160px] h-[160px] md:w-[180px] md:h-[180px] lg:w-[220px] lg:h-[220px] rounded-full overflow-hidden bg-[#ffffff10] border border-[white]/10 flex items-center justify-center shadow-2xl">
 										<Image src={client.imageUrl} alt={client.name} width={220} height={220} className="object-contain" />
 									</div>
 								</a>
-								<p className="text-lg sm:text-xl md:text-3xl font-inter font-semibold text-[#f3e8fd] mt-2">{client.name}</p>
+								<p className="text-2xl lg:text-3xl font-raleway font-semibold text-[#f3e8fd] mt-2">{client.name}</p>
 							</div>
 						))}
 					</div>
 					<div className="mt-12 sm:mt-16 w-full flex items-center justify-center">
-						<ShinyText text="and many more.." disabled={false} speed={2} className="text-base sm:text-lg md:text-3xl font-bakbak italic" />
+						<ShinyText text="and many more.." disabled={false} speed={2} className="text-base sm:text-xl md:text-3xl font-raleway italic font-semibold" />
 					</div>
 				</div>
 			</section>
@@ -230,7 +247,7 @@ export default function Home() {
 				<div className="flex flex-col items-center mb-6 sm:mb-8">
 					<h2 className="text-3xl sm:text-4xl md:text-5xl font-inter font-black text-[#f3e8fd] drop-shadow-[0_0_10px_rgba(243,232,253,0.3)]">Short Form</h2>
 				</div>
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mx-auto max-w-[800px]">
+				<div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mx-auto max-w-[800px]">
 					{shortFormVideos.map((video) => (
 						<div key={video.id} className={`w-full`}>
 							<VideoPlayer src={video.videoUrl} title={video.title} aspectRatio={video.aspect} />
@@ -257,7 +274,7 @@ export default function Home() {
 			{/* Testimonials Section */}
 			<section id="testimonials" className="relative py-6 sm:py-8 bg-[#000]/10 w-full rounded-[30px] backdrop-blur-md mx-auto px-4 md:px-8 max-w-[1750px] border border-[white]/20">
 				<div className="columns-1 sm:columns-2 md:columns-2 lg:columns-3" style={{ columnGap: '1rem' }}>
-					{testimonials.map((t) => (
+					{displayedTestimonials.map((t) => (
 						<div key={t.id} className="break-inside-avoid mb-4">
 							<Image src={t.imageUrl} alt={`Testimonial ${t.id}`} width={800} height={600} className="w-full h-auto object-cover rounded-[10px]" />
 						</div>

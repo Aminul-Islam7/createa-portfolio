@@ -74,8 +74,8 @@ export function VideoShowcase({ videoUrl, channelName, viewCount, isReversed = f
 	const displayViewCount = liveViewCount || viewCount;
 	const contentSection = (
 		<div className={`flex flex-col justify-center space-y-1 sm:space-y-4 md:space-y-6 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 ${isReversed ? 'md:order-1' : 'md:order-2'}`}>
-			<h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-[#f3e8fd] leading-tight drop-shadow-[0_0_30px_rgba(217,97,159,0.5)]">{channelName}</h2>
-			<p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold bg-gradient-to-r from-[#d9619f] to-[#5bc5d7] text-transparent bg-clip-text drop-shadow-[0_4px_8px_rgba(91,197,215,0.3)] py-1 leading-[1.3] sm:leading-[1.3] md:leading-[1.3] lg:leading-[1.4] xl:leading-[1.4]">{displayViewCount}</p>
+			<h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-[#f3e8fd] leading-tight drop-shadow-[0_0_30px_rgba(217,97,159,0.5)] text-center md:text-left">{channelName}</h2>
+			<p className="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-bold bg-gradient-to-r from-[#d9619f] to-[#5bc5d7] text-transparent bg-clip-text drop-shadow-[0_4px_8px_rgba(91,197,215,0.3)] py-1 leading-[1.3] sm:leading-[1.3] md:leading-[1.4] lg:leading-[1.4] xl:leading-[1.4] text-center md:text-left">{displayViewCount}</p>
 		</div>
 	);
 
