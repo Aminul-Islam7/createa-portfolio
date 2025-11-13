@@ -3,18 +3,14 @@
 import { ProjectCard } from '@/components/ProjectCard';
 import { Contact } from '@/components/Contact';
 import { VideoShowcase } from '@/components/VideoShowcase';
+import { VideoPlayer } from '@/components/VideoPlayer';
 import { AnimatedLogo } from '@/components/AnimatedLogo';
 import NavigationLinks from '@/components/NavigationLinks';
-import { DndContext, useDraggable, DragEndEvent } from '@dnd-kit/core';
-import { useState, useEffect, CSSProperties } from 'react';
 import Image from 'next/image';
 import SplitText from '@/components/SplitText';
+import ShinyText from '@/components/ShinyText';
 
-interface Position {
-	top: number;
-	left: number;
-	rotation: number;
-}
+// position type removed; not used for masonry layout
 
 const showcaseVideos = [
 	{
@@ -27,7 +23,13 @@ const showcaseVideos = [
 		id: 2,
 		channelName: 'THE SPECIAL ONE',
 		videoUrl: 'https://drive.google.com/file/d/1w97Kb-RqvxldAc8IZUOqV3RrCIRD_K0_/view?usp=sharing',
-		viewCount: 'Highlights only (Full video yet to be uploaded)',
+		viewCount: (
+			<>
+				Highlights only
+				<br />
+				(Full video yet to be uploaded)
+			</>
+		),
 	},
 	{
 		id: 3,
@@ -46,15 +48,15 @@ const showcaseVideos = [
 const projects = [
 	{
 		id: 1,
-		title: 'Tam Kaur Long Form',
+		title: 'Talking head showcase ',
 		videoUrl: 'https://drive.google.com/file/d/1OfpMwwTKxLLErOhB_s3pCC-IHMTVo1GN/view?usp=sharing',
-		tags: ['Talking Head', 'Self Improvement'],
+		tags: ['Self Improvement', 'Low Music'],
 	},
 	{
 		id: 2,
-		title: 'RR trial, talking head 1',
+		title: 'Talking head showcase (Heavier edit)',
 		videoUrl: 'https://drive.google.com/file/d/11Ew3fD-Rxx3IqMkG9rq76AbSeRCky3oE/view?usp=sharing',
-		tags: ['Talking Head', 'Finance Niche'],
+		tags: ['Finance Niche'],
 	},
 	{
 		id: 3,
@@ -73,19 +75,23 @@ const projects = [
 const testimonials = [
 	{
 		id: 1,
-		imageUrl: '/testimonials/image01.jpg',
+		imageUrl: '/testimonials/t1.png',
 	},
 	{
 		id: 2,
-		imageUrl: '/testimonials/image03.jpg',
+		imageUrl: '/testimonials/t2.png',
 	},
 	{
 		id: 3,
-		imageUrl: '/testimonials/image01.jpg',
+		imageUrl: '/testimonials/t3.png',
 	},
 	{
 		id: 4,
-		imageUrl: '/testimonials/image03.jpg',
+		imageUrl: '/testimonials/t4.png',
+	},
+	{
+		id: 5,
+		imageUrl: '/testimonials/t5.png',
 	},
 ];
 
@@ -95,57 +101,22 @@ const clients = [
 	{ id: 3, name: 'Liquid Minds', imageUrl: '/client-logos/liquid-minds.jpg', url: 'https://www.youtube.com/@LiquidMinds_art' },
 ];
 
-interface DraggableImageProps {
-	testimonial: { id: number; imageUrl: string };
-	position: { top: number; left: number; rotation: number };
-}
-
-function DraggableImage({ testimonial, position }: DraggableImageProps) {
-	const { attributes, listeners, setNodeRef, transform } = useDraggable({ id: testimonial.id });
-
-	const style: CSSProperties = {
-		top: `${position.top}%`,
-		left: `${position.left}%`,
-		transform: transform ? `translate(${transform.x}px, ${transform.y}px)` : undefined,
-		position: 'absolute',
-	};
-
-	return (
-		<div ref={setNodeRef} {...listeners} {...attributes} style={style} className="w-[150px] h-auto object-contain rounded-[20px] cursor-move">
-			<Image src={testimonial.imageUrl} alt={`Testimonial ${testimonial.id}`} width={150} height={150} className="rounded-[20px]" />
-		</div>
-	);
-}
+const shortFormVideos = [
+	{
+		id: 'sf1',
+		videoUrl: 'https://www.youtube.com/embed/hhoiH8tbvw0',
+		title: 'Short vertical',
+		aspect: '9/16',
+	},
+	{
+		id: 'sf2',
+		videoUrl: 'https://drive.google.com/file/d/1xyGOhYYcBVvzhc0gMCHhLu2bSvJTbRpZ/view?usp=sharing',
+		title: 'Short vertical',
+		aspect: '9/16',
+	},
+];
 
 export default function Home() {
-	const [positions, setPositions] = useState<Position[]>([]);
-
-	useEffect(() => {
-		const computedPositions: Position[] = testimonials.map(() => ({
-			top: Math.random() * 80,
-			left: Math.random() * 80,
-			rotation: Math.random() * 30 - 15,
-		}));
-		setPositions(computedPositions);
-	}, []);
-
-	const handleDragEnd = (event: DragEndEvent) => {
-		const { id } = event.active;
-		const { delta } = event;
-
-		setPositions((prevPositions) =>
-			prevPositions.map((pos, index) =>
-				testimonials[index].id === id
-					? {
-							...pos,
-							top: pos.top + (delta.y / 600) * 100, // Adjust based on container height
-							left: pos.left + (delta.x / 600) * 100, // Adjust based on container width
-					  }
-					: pos
-			)
-		);
-	};
-
 	return (
 		<main className="flex flex-col w-full bg-[#000] relative overflow-hidden">
 			{/* Background Pattern */}
@@ -230,12 +201,15 @@ export default function Home() {
 							</div>
 						))}
 					</div>
+					<div className="mt-16 w-full flex items-center justify-center">
+						<ShinyText text="and many more.." disabled={false} speed={2} className="text-lg md:text-3xl font-bakbak italic" />
+					</div>
 				</div>
 			</section>
 
 			{/* Projects Section */}
 			<section>
-				<div className="space-y-14 md:space-y-22">
+				<div className="space-y-2">
 					{showcaseVideos.map((video, index) => (
 						<div key={video.id} className="py-8 md:py-12 px-4 md:px-8 xl:px-16">
 							<VideoShowcase videoUrl={video.videoUrl} channelName={video.channelName} viewCount={video.viewCount} isReversed={index % 2 === 1} />
@@ -244,10 +218,26 @@ export default function Home() {
 				</div>
 			</section>
 
+			{/* Short Form Section */}
+			<section id="short-form" className="relative p-4 md:p-8 w-full">
+				<div className="container mx-auto max-w-[800px]">
+					<div className="flex flex-col items-center mb-8">
+						<h2 className="text-4xl md:text-5xl font-inter font-black text-[#f3e8fd] drop-shadow-[0_0_10px_rgba(243,232,253,0.3)]">Short Form</h2>
+					</div>
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+						{shortFormVideos.map((video) => (
+							<div key={video.id} className={`w-full`}>
+								<VideoPlayer src={video.videoUrl} title={video.title} aspectRatio={video.aspect} />
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+
 			{/* Featured Videos Section */}
 
 			<section id="work" className="relative p-8 md:p-16 w-full">
-				<div className="relative w-full">
+				<div className="container mx-auto max-w-[1400px]">
 					<div className="flex flex-col items-center mb-16">
 						<h2 className="text-4xl md:text-5xl font-inter font-black text-[#f3e8fd] drop-shadow-[0_0_10px_rgba(243,232,253,0.3)]">Featured Work</h2>
 					</div>
@@ -262,13 +252,14 @@ export default function Home() {
 			<div className="my-4 md:my-10"></div>
 
 			{/* Testimonials Section */}
-			<section id="testimonials" className="relative py-16 bg-[#000]/10 w-full rounded-[30px] backdrop-blur-md mx-auto px-4 md:px-8 max-w-[1750px] border border-[white]/20">
-				<DndContext onDragEnd={handleDragEnd}>
-					<div className="relative w-full h-[600px]">
-						{/* Dynamically render images directly */}
-						{positions.length > 0 && testimonials.map((testimonial, index) => <DraggableImage key={testimonial.id} testimonial={testimonial} position={positions[index]} />)}
-					</div>
-				</DndContext>
+			<section id="testimonials" className="relative py-8 bg-[#000]/10 w-full rounded-[30px] backdrop-blur-md mx-auto px-4 md:px-8 max-w-[1750px] border border-[white]/20">
+				<div className="columns-1 sm:columns-2 md:columns-3" style={{ columnGap: '1rem' }}>
+					{testimonials.map((t) => (
+						<div key={t.id} className="break-inside-avoid mb-4">
+							<Image src={t.imageUrl} alt={`Testimonial ${t.id}`} width={800} height={600} className="w-full h-auto object-cover rounded-[10px]" />
+						</div>
+					))}
+				</div>
 			</section>
 
 			{/* Contact Section */}

@@ -11,9 +11,9 @@ interface ProjectCardProps {
 
 export function ProjectCard({ title, videoUrl, thumbnailUrl, tags }: ProjectCardProps) {
 	return (
-		<div className="group relative rounded-3xl bg-[rgba(91,197,215,0.15)] p-6 shadow-[0_0_30px_rgba(0,0,0,0.1)] transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(91,197,215,0.2)] backdrop-blur-sm">
+		<div className="group relative rounded-3xl bg-[rgba(91,197,215,0.15)] p-4 shadow-[0_0_30px_rgba(0,0,0,0.1)] transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(91,197,215,0.2)] backdrop-blur-sm">
 			<VideoPlayer src={videoUrl} title={title} />
-			<div className="mt-6">
+			<div className="mt-3 p-2">
 				<h3 className="text-3xl font-bakbak text-[#f3e8fd] mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">{title}</h3>
 				{tags && tags.length > 0 && (
 					<div className="mt-4 flex flex-wrap gap-2">
