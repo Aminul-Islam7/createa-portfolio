@@ -2,106 +2,313 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================
+   CSS CUSTOM PROPERTIES / DESIGN TOKENS
+   ============================================ */
 :root {
-	--font-inter: var(--font-inter);
-	--font-bakbak: var(--font-bakbak);
+  /* Font families - Reference the Next.js generated variables */
+  --font-family-inter: var(--font-inter);
+  --font-family-bakbak: var(--font-bakbak);
+  --font-family-raleway: var(--font-raleway);
+  --font-family-playfair: var(--font-playfair);
+
+  /* Brand Colors */
+  --color-primary: rgb(0, 122, 255);
+  --color-primary-hover: rgb(44, 146, 255);
+  --color-accent-pink: #d9619f;
+  --color-accent-cyan: #5bc5d7;
+  --color-text-light: #f3e8fd;
+  --color-background: #000;
+  --color-surface: #141414;
+
+  /* Shadows */
+  --shadow-glow-blue: 0 0 40px rgba(0, 122, 255, 0.6);
+  --shadow-glow-blue-hover: 0 0 50px rgba(0, 122, 255, 0.9);
+  --shadow-glow-pink: 0 0 30px rgba(217, 97, 159, 0.5);
+  --shadow-glow-cyan: 0 0 20px rgba(91, 197, 215, 0.2);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  /* Spacing */
+  --section-padding: clamp(2rem, 5vw, 4rem);
+
+  /* ShadCN UI Variables */
+  --background: 0 0% 0%;
+  --foreground: 270 50% 97%;
+  --card: 0 0% 8%;
+  --card-foreground: 270 50% 97%;
+  --popover: 0 0% 8%;
+  --popover-foreground: 270 50% 97%;
+  --primary: 211 100% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 215 27.9% 16.9%;
+  --secondary-foreground: 270 50% 97%;
+  --muted: 215 27.9% 16.9%;
+  --muted-foreground: 217.9 10.6% 64.9%;
+  --accent: 215 27.9% 16.9%;
+  --accent-foreground: 270 50% 97%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 215 27.9% 16.9%;
+  --input: 215 27.9% 16.9%;
+  --ring: 211 100% 50%;
+  --radius: 0.75rem;
+
+  /* Chart colors */
+  --chart-1: 220 70% 50%;
+  --chart-2: 160 60% 45%;
+  --chart-3: 30 80% 55%;
+  --chart-4: 280 65% 60%;
+  --chart-5: 340 75% 55%;
 }
 
-@layer base {
-	body {
-		@apply bg-[#141414] text-white min-h-screen;
-		font-family: var(--font-inter);
-		background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201024%201024%22%20width%3D%221024%22%20height%3D%221024%22%20preserveAspectRatio%3D%22none%22%3E%20%3Cstyle%3E%20circle%20%7B%20fill%3A%20rgba(0,0,0,0.502)%3B%20%7D%20%3C%2Fstyle%3E%20%3Ccircle%20cx%3D%22256%22%20cy%3D%22256%22%20r%3D%223.01%25%22%20%2F%3E%20%3Ccircle%20cx%3D%22768%22%20cy%3D%22768%22%20r%3D%223.01%25%22%20%2F%3E%3C%2Fsvg%3E');
-		background-size: 256px;
-		background-position: center;
-		background-repeat: repeat;
-	}
-
-	.font-inter {
-		font-family: var(--font-inter);
-	}
-
-	.font-bakbak {
-		font-family: var(--font-bakbak);
-	}
-
-	.font-raleway {
-		font-family: var(--font-raleway);
-	}
-
-	.font-playfair {
-		font-family: var(--font-playfair);
-		font-style: italic;
-	}
-  :root {
-		--background: 0 0% 100%;
-		--foreground: 224 71.4% 4.1%;
-		--card: 0 0% 100%;
-		--card-foreground: 224 71.4% 4.1%;
-		--popover: 0 0% 100%;
-		--popover-foreground: 224 71.4% 4.1%;
-		--primary: 220.9 39.3% 11%;
-		--primary-foreground: 210 20% 98%;
-		--secondary: 220 14.3% 95.9%;
-		--secondary-foreground: 220.9 39.3% 11%;
-		--muted: 220 14.3% 95.9%;
-		--muted-foreground: 220 8.9% 46.1%;
-		--accent: 220 14.3% 95.9%;
-		--accent-foreground: 220.9 39.3% 11%;
-		--destructive: 0 84.2% 60.2%;
-		--destructive-foreground: 210 20% 98%;
-		--border: 220 13% 91%;
-		--input: 220 13% 91%;
-		--ring: 224 71.4% 4.1%;
-		--chart-1: 12 76% 61%;
-		--chart-2: 173 58% 39%;
-		--chart-3: 197 37% 24%;
-		--chart-4: 43 74% 66%;
-		--chart-5: 27 87% 67%;
-		--radius: 0.5rem;
-	}
-  .dark {
-		--background: 224 71.4% 4.1%;
-		--foreground: 210 20% 98%;
-		--card: 224 71.4% 4.1%;
-		--card-foreground: 210 20% 98%;
-		--popover: 224 71.4% 4.1%;
-		--popover-foreground: 210 20% 98%;
-		--primary: 210 20% 98%;
-		--primary-foreground: 220.9 39.3% 11%;
-		--secondary: 215 27.9% 16.9%;
-		--secondary-foreground: 210 20% 98%;
-		--muted: 215 27.9% 16.9%;
-		--muted-foreground: 217.9 10.6% 64.9%;
-		--accent: 215 27.9% 16.9%;
-		--accent-foreground: 210 20% 98%;
-		--destructive: 0 62.8% 30.6%;
-		--destructive-foreground: 210 20% 98%;
-		--border: 215 27.9% 16.9%;
-		--input: 215 27.9% 16.9%;
-		--ring: 216 12.2% 83.9%;
-		--chart-1: 220 70% 50%;
-		--chart-2: 160 60% 45%;
-		--chart-3: 30 80% 55%;
-		--chart-4: 280 65% 60%;
-		--chart-5: 340 75% 55%;
-	}
-}
-
-@layer components {
-	.container {
-		@apply px-4 mx-auto;
-	}
-}
-
-
-
+/* ============================================
+   BASE STYLES
+   ============================================ */
 @layer base {
   * {
     @apply border-border;
-	}
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 2rem;
+  }
+
   body {
-    @apply bg-background text-foreground;
-	}
+    @apply min-h-screen text-white antialiased;
+    font-family: var(--font-family-inter), system-ui, sans-serif;
+    background-color: var(--color-surface);
+    background-image: radial-gradient(
+        ellipse 80% 50% at 50% -20%,
+        rgba(91, 197, 215, 0.15),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 100% 100%,
+        rgba(217, 97, 159, 0.1),
+        transparent
+      );
+    background-attachment: fixed;
+  }
+
+  /* Selection highlighting */
+  ::selection {
+    background-color: rgba(91, 197, 215, 0.3);
+    color: #fff;
+  }
+
+  /* Smooth focus styles */
+  :focus-visible {
+    outline: 2px solid var(--color-accent-cyan);
+    outline-offset: 2px;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-surface);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      180deg,
+      var(--color-accent-pink),
+      var(--color-accent-cyan)
+    );
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      180deg,
+      var(--color-accent-cyan),
+      var(--color-accent-pink)
+    );
+  }
 }
 
+/* ============================================
+   TYPOGRAPHY CLASSES
+   ============================================ */
+@layer base {
+  .font-inter {
+    font-family: var(--font-family-inter), system-ui, sans-serif;
+  }
+
+  .font-bakbak {
+    font-family: var(--font-family-bakbak), system-ui, sans-serif;
+  }
+
+  .font-raleway {
+    font-family: var(--font-family-raleway), system-ui, sans-serif;
+  }
+
+  .font-playfair {
+    font-family: var(--font-family-playfair), Georgia, serif;
+    font-style: italic;
+  }
+}
+
+/* ============================================
+   COMPONENT STYLES
+   ============================================ */
+@layer components {
+  .container {
+    @apply px-4 mx-auto;
+    max-width: 1600px;
+  }
+
+  /* Glass effect for cards and surfaces - with subtle cyan tint */
+  .glass {
+    background: rgba(91, 197, 215, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(91, 197, 215, 0.1);
+  }
+
+  .glass-hover:hover {
+    background: rgba(91, 197, 215, 0.08);
+    border-color: rgba(91, 197, 215, 0.15);
+  }
+
+  /* Primary button style */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-3 px-8 py-6 text-xl font-black tracking-wide text-white rounded-full transition-all duration-300;
+    background-color: var(--color-primary);
+    box-shadow: var(--shadow-glow-blue);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-primary-hover);
+    box-shadow: var(--shadow-glow-blue-hover);
+    transform: scale(1.05);
+  }
+
+  /* Section heading */
+  .section-heading {
+    @apply text-3xl sm:text-4xl md:text-5xl font-inter font-black text-center;
+    color: var(--color-text-light);
+    text-shadow: 0 0 10px rgba(243, 232, 253, 0.3);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      var(--color-accent-pink),
+      var(--color-accent-cyan)
+    );
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-500;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  /* Floating animation for elements */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Fade in animation */
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  /* Slide up animation */
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+@layer utilities {
+  /* Text glow effect */
+  .text-glow {
+    text-shadow: 0 0 20px currentColor;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* ============================================
+   KEYFRAME ANIMATIONS
+   ============================================ */
+@keyframes float {
+  0%,
+  100% {
+    transform: rotate(-2deg) translateY(0);
+  }
+  50% {
+    transform: rotate(2deg) translateY(-8px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(91, 197, 215, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(91, 197, 215, 0.6);
+  }
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

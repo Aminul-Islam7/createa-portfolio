@@ -4,17 +4,39 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 
 export function Contact() {
-	const handleContact = () => {
-		window.location.href = 'mailto:contact@example.com';
-	};
+	const discordUrl = 'https://discordid.netlify.app/?id=1254023931246153800';
+	const email = 'createa.vids@gmail.com';
 
 	return (
-		<section id="contact" className="flex flex-col justify-center items-center py-24">
-			<button onClick={() => window.open('https://discordid.netlify.app/?id=1254023931246153800', '_blank', 'noopener,noreferrer')} className="flex items-center gap-4 px-10 py-8 text-2xl md:text-4xl bg-[rgb(0,122,255)] text-white rounded-full font-black tracking-wide hover:bg-[rgba(44,146,255,1)] transition-all duration-300 shadow-[0_0_40px_rgba(0,122,255,0.6)] backdrop-blur-sm hover:scale-105 hover:shadow-[0_0_40px_rgba(0,122,255,0.9)]">
-				<span>Hire Me!</span>
-				<FontAwesomeIcon icon={faDiscord} className="w-6 h-6 md:w-8 md:h-8" />
-			</button>
-			<p className="mt-10 text-white text-2xl md:text-3xl font-raleway">createa.vids@gmail.com</p>
+		<section id="contact" className="relative py-20 px-4">
+
+			<div className="relative flex flex-col justify-center items-center gap-8">
+
+				{/* Discord Button */}
+				<button
+					onClick={() => window.open(discordUrl, '_blank', 'noopener,noreferrer')}
+					className="btn-primary text-2xl md:text-4xl py-6 sm:py-8 px-10 sm:px-14"
+					aria-label="Contact via Discord"
+				>
+					<span>Hire Me!</span>
+					<FontAwesomeIcon icon={faDiscord} className="w-7 h-7 md:w-9 md:h-9" />
+				</button>
+
+				{/* Email */}
+				<a
+					href={`mailto:${email}`}
+					className="mt-4 text-xl sm:text-2xl md:text-3xl font-raleway font-light text-white/60 hover:text-white/90 transition-colors underline-offset-4"
+				>
+					{email}
+				</a>
+
+				{/* Footer credits */}
+				<footer className="mt-10 pt-8 border-t border-white/10 w-full max-w-xl text-center">
+					<p className="text-sm text-white/40 font-raleway">
+						© {new Date().getFullYear()} Createa. All rights reserved.
+					</p>
+				</footer>
+			</div>
 		</section>
 	);
 }
