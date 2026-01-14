@@ -41,23 +41,23 @@ import './globals.css';
 
 // Metadata
 export const metadata: Metadata = {
-	title: 'Createa - Video Editor | Motion Graphics & Storytelling',
+	title: 'Createa - Video Editor',
 	description:
-		'Createa is a professional video editor specializing in motion graphics, storytelling, and creative video production. See my portfolio and let\'s create something amazing together.',
-	keywords: ['video editor', 'motion graphics', 'video production', 'content creator', 'YouTube editor', 'storytelling'],
+		'Video Editor Portfolio - A showcase of my professional work and experience',
+	keywords: ['video editor', 'motion graphics', 'video production', 'content creator', 'YouTube editor', 'storytelling', 'portfolio', 'sound design', 'vfx', 'artist', 'after effects', 'premiere pro'],
 	authors: [{ name: 'Createa' }],
 	creator: 'Createa',
 	openGraph: {
 		type: 'website',
 		locale: 'en_US',
 		title: 'Createa - Professional Video Editor',
-		description: 'Motion graphics expert with a passion for storytelling. View my portfolio and work samples.',
+		description: 'A showcase of my professional work and experience',
 		siteName: 'Createa',
 	},
 	twitter: {
 		card: 'summary_large_image',
 		title: 'Createa - Professional Video Editor',
-		description: 'Motion graphics expert with a passion for storytelling.',
+		description: 'A showcase of my professional work and experience',
 	},
 	icons: {
 		icon: '/logo.svg',
